@@ -1,7 +1,9 @@
 import type { Context } from "hono"
-import { db } from "../../structures/data.ts"
+import type { Ischema } from "../../utils/schema.ts"
 
-export const options = {
+export const schema: Ischema = {
+	name: "Me",
+	description: "Authorizes the current user & fetches their data.",
 	url: "/auth/me",
 	method: "GET",
 	middleware: [],

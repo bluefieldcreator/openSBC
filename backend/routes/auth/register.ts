@@ -1,11 +1,31 @@
 import type { Context } from "hono"
+import type { Ischema } from "../../utils/schema.ts"
 
-export const options = {
+export const schema: Ischema = {
+	name: "Register",
+	description: "Register's a new user to the service.",
 	url: "/auth/register",
-	method: "GET",
+	method: "POST",
 	middleware: [],
 }
 
-export function run(c: Context) {
-	return c.text("register.ts")
+export  function run(c: Context) {
+	// Step 1 we analyze the data sent by the user.
+	try {
+		
+		// validator.compile(registerSchema)(body)
+		return c.json({
+			status: 200,
+			data: {
+				message: "Register complete.",
+			},
+		})
+	} catch {
+		return c.json({
+			status: 500,
+			data: {
+				message: "Failed to register",
+			},
+		})
+	}
 }

@@ -9,12 +9,14 @@ interface Irun {
 }
 
 export interface routeFunc {
-	run: Irun
-	options: {
+	schema: {
+		name: string
+		description: string
 		url: string
 		method: string
 		middleware: string[]
 	}
+	run: Irun
 }
 
 export default {
@@ -26,11 +28,11 @@ export default {
 			routesDir.lastIndexOf("/routes"),
 		)
 		const allRoutes = await findRoutesRecursive(routesDir, baseDir).catch(
-			(err) => errorMsg(err),
+			(err) => errorMsg(err, "Error logging routes to server", 1),
 		)
 
 		const routeFunctions: routeFunc[] = []
-		for (const routeFile of allRoutes) {
+		for (const routeFile of allRoutes!) {
 			const route: routeFunc = await import(`./../${routeFile}`).catch(
 				(err) => errorMsg(err),
 			)

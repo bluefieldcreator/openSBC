@@ -2,19 +2,39 @@
   "version": "4",
   "specifiers": {
     "jsr:@hono/hono@^4.6.6": "4.6.6",
+    "jsr:@std/assert@^1.0.6": "1.0.6",
     "jsr:@std/dotenv@*": "0.225.2",
+    "jsr:@std/expect@*": "1.0.6",
+    "jsr:@std/internal@^1.0.4": "1.0.4",
     "jsr:@std/path@*": "1.0.6",
     "npm:@prisma/client@^5.21.1": "5.21.1_prisma@5.21.1",
     "npm:@types/node@*": "22.5.4",
     "npm:prisma@^5.21.1": "5.21.1",
-    "npm:prisma@latest": "5.21.1"
+    "npm:prisma@latest": "5.21.1",
+    "npm:zod@^3.23.8": "3.23.8"
   },
   "jsr": {
     "@hono/hono@4.6.6": {
       "integrity": "4856346894db3abfc4bdb89607b4d7bd84725236076fc922573def2b2b64130b"
     },
+    "@std/assert@1.0.6": {
+      "integrity": "1904c05806a25d94fe791d6d883b685c9e2dcd60e4f9fc30f4fc5cf010c72207",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
     "@std/dotenv@0.225.2": {
       "integrity": "e2025dce4de6c7bca21dece8baddd4262b09d5187217e231b033e088e0c4dd23"
+    },
+    "@std/expect@1.0.6": {
+      "integrity": "dffba969ca5ea6d7c39338d4985c9af2bfa6e080c710cc2b77756dd7657c369c",
+      "dependencies": [
+        "jsr:@std/assert",
+        "jsr:@std/internal"
+      ]
+    },
+    "@std/internal@1.0.4": {
+      "integrity": "62e8e4911527e5e4f307741a795c0b0a9e6958d0b3790716ae71ce085f755422"
     },
     "@std/path@1.0.6": {
       "integrity": "ab2c55f902b380cf28e0eec501b4906e4c1960d13f00e11cfbcd21de15f18fed"
@@ -74,6 +94,9 @@
     },
     "undici-types@6.19.8": {
       "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
+    },
+    "zod@3.23.8": {
+      "integrity": "sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g=="
     }
   },
   "redirects": {
@@ -153,7 +176,8 @@
     "packageJson": {
       "dependencies": [
         "npm:@prisma/client@^5.21.1",
-        "npm:prisma@^5.21.1"
+        "npm:prisma@^5.21.1",
+        "npm:zod@^3.23.8"
       ]
     }
   }

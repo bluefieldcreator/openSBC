@@ -4,7 +4,7 @@
 		"prisma": "npm:prisma@^5.21.1"
 	},
 	"tasks": {
-		"start-backend": "deno run --allow-net --allow-env --allow-read structures/server.ts",
+		"start-backend": "deno run --allow-net --allow-env --allow-read structures/bootstrapper.ts",
 		"db-push": "deno run -A npm:prisma@latest db push",
 		"db-generate": "deno run -A --unstable npm:prisma@latest generate --no-engine",
 		"db-studio": "deno run -A npm:prisma studio"
@@ -14,20 +14,32 @@
 		"jsxImportSource": "hono/jsx"
 	},
 	"lint": {
-		"exclude": ["node_modules/", "generated/"],
+		"exclude": [
+			"node_modules/",
+			"generated/"
+		],
 		"rules": {
-			"tags": ["recommended"],
-			"include": ["ban-untagged-todo"],
-			"exclude": ["no-unused-vars"]
+			"tags": [
+				"recommended"
+			],
+			"include": [
+				"ban-untagged-todo"
+			],
+			"exclude": [
+				"no-unused-vars"
+			]
 		}
 	},
 	"fmt": {
 		"useTabs": true,
-		"lineWidth": 120,
-		"indentWidth": 4,
+		"lineWidth": 500,
+		"indentWidth": 6,
 		"semiColons": false,
 		"singleQuote": false,
 		"proseWrap": "preserve",
-		"exclude": ["node_modules/", "generated/"]
+		"exclude": [
+			"node_modules/",
+			"generated/"
+		]
 	}
 }
