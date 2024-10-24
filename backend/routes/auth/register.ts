@@ -19,7 +19,7 @@ export const schema: Ischema = {
 export async function run(c: Context) {
 	// Step 1 we analyze the data sent by the user.
 
-	const { username, password, passwordConfirm, email }: registerSchema = await c.req.json()
+	const { username, password, passwordRepeat, email }: registerSchema = await c.req.json()
 
 	// Validate username, pwd, etc...
 	if (!username || !password) {
@@ -34,19 +34,23 @@ export async function run(c: Context) {
 		return jsonStatus(c, 400, "Invalid E-Mail format.")
 	}
 
-	if (password != passwordConfirm) {
+	if (password != passwordRepeat) {
 		return jsonStatus(c, 400, "Passwords dont match.")
 	}
 
 	// We check if the user exists.
-	const exists = await db.user.findFirst({
-		where: {
-			username,
-		},
-	})
+	try {
+		const exists = await db.user.findFirst({
+			where: {
+				username,
+			},
+		})
 
-	if (exists) {
-		return jsonStatus(c, 409, "User already exists with this username.")
+		if (exists) {
+			return jsonStatus(c, 409, JSON.stringify(exists))
+		}
+	} catch(err) {
+		return jsonStatus(c, 500, `${err}`) // TODO(@bluefield) FIX PRISMA? For some reason it refuses to work ont he DENO runtime.
 	}
 
 	// Hash E-Mail & Password

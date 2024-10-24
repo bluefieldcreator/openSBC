@@ -3,10 +3,11 @@
 		"start-backend": "deno run --allow-net --allow-env --allow-read structures/bootstrapper.ts",
 		"start-test": "deno test --allow-read --allow-env --allow-net",
 		"db-push": "deno run -A npm:prisma@latest db push",
-		"db-generate": "deno run -A --unstable npm:prisma@latest generate --no-engine",
+		"db-migrate": "deno run -A npm:prisma migrate dev --name init",
+		"db-generate": "deno run -A --unstable npm:prisma generate --no-engine",
 		"db-studio": "deno run -A npm:prisma studio"
 	},
-
+	"nodeModulesDir": "auto",
 	"lint": {
 		"exclude": [
 			"node_modules/",
@@ -38,11 +39,7 @@
 	},
 	"imports": {
 		"hono": "jsr:@hono/hono@^4.6.6",
-		"prisma": "npm:prisma@^5.21.1",
-		"@structs": "./structures/",
-		"@utils": "./utils/",
-		"@routes": "./routes/",
-		"@tests": "./tests/"
+		"prisma": "npm:prisma@^5.21.1"
 	},
 	"compilerOptions": {
 		"jsx": "precompile",
