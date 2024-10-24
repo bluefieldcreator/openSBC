@@ -1,12 +1,12 @@
 import type { Context } from "hono";
-import { db } from "../../structures/data.ts";
 
 export const options = {
-  url: "/auth/me",
+  url: "/users/:id",
   method: "GET",
   middleware: [],
 };
 
 export function run(c: Context) {
-
+  const { id } = c.req.param();
+  return c.text(id);
 }

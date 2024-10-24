@@ -16,7 +16,13 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   username String
-  email String
+  email    String?
+  verified Boolean @default(false)
+  password String
+  avatar   String  @default("blank")
+  bio      String  @default("New user")
+  feed     String  @default("Just joined")
+  Status   Int     @default(1) // 1 --> Online | 0 --> Offline | -1 --> Do not Disturb
 }
