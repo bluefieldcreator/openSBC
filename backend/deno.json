@@ -1,18 +1,11 @@
 {
-	"imports": {
-		"hono": "jsr:@hono/hono@^4.6.6",
-		"prisma": "npm:prisma@^5.21.1"
-	},
 	"tasks": {
 		"start-backend": "deno run --allow-net --allow-env --allow-read structures/bootstrapper.ts",
 		"db-push": "deno run -A npm:prisma@latest db push",
 		"db-generate": "deno run -A --unstable npm:prisma@latest generate --no-engine",
 		"db-studio": "deno run -A npm:prisma studio"
 	},
-	"compilerOptions": {
-		"jsx": "precompile",
-		"jsxImportSource": "hono/jsx"
-	},
+
 	"lint": {
 		"exclude": [
 			"node_modules/",
@@ -41,5 +34,17 @@
 			"node_modules/",
 			"generated/"
 		]
+	},
+	"imports": {
+		"hono": "jsr:@hono/hono@^4.6.6",
+		"prisma": "npm:prisma@^5.21.1",
+		"@structs": "./structures/",
+		"@utils": "./utils/",
+		"@routes": "./routes/",
+		"@tests": "./tests/"
+	},
+	"compilerOptions": {
+		"jsx": "precompile",
+		"jsxImportSource": "hono/jsx"
 	}
 }

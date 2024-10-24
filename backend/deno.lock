@@ -1,6 +1,7 @@
 {
   "version": "4",
   "specifiers": {
+    "jsr:@hono/hono@*": "4.6.6",
     "jsr:@hono/hono@^4.6.6": "4.6.6",
     "jsr:@std/assert@^1.0.6": "1.0.6",
     "jsr:@std/dotenv@*": "0.225.2",
@@ -10,8 +11,7 @@
     "npm:@prisma/client@^5.21.1": "5.21.1_prisma@5.21.1",
     "npm:@types/node@*": "22.5.4",
     "npm:prisma@^5.21.1": "5.21.1",
-    "npm:prisma@latest": "5.21.1",
-    "npm:zod@^3.23.8": "3.23.8"
+    "npm:prisma@latest": "5.21.1"
   },
   "jsr": {
     "@hono/hono@4.6.6": {
@@ -94,9 +94,6 @@
     },
     "undici-types@6.19.8": {
       "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
-    },
-    "zod@3.23.8": {
-      "integrity": "sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g=="
     }
   },
   "redirects": {
@@ -176,8 +173,7 @@
     "packageJson": {
       "dependencies": [
         "npm:@prisma/client@^5.21.1",
-        "npm:prisma@^5.21.1",
-        "npm:zod@^3.23.8"
+        "npm:prisma@^5.21.1"
       ]
     }
   }

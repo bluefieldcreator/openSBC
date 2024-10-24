@@ -9,10 +9,9 @@ export const schema: Ischema = {
 	middleware: [],
 }
 
-export  function run(c: Context) {
+export function run(c: Context) {
 	// Step 1 we analyze the data sent by the user.
 	try {
-		
 		// validator.compile(registerSchema)(body)
 		return c.json({
 			status: 200,
