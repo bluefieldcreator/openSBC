@@ -9,5 +9,5 @@ export const schema: Ischema = {
 	middleware: [],
 }
 
-export function run(c: Context) {
+export async function run(c: Context) {
 }

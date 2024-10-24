@@ -9,7 +9,7 @@ export const schema: Ischema = {
 	middleware: [],
 }
 
-export function run(c: Context) {
+export async function run(c: Context) {
 	const { id } = c.req.param()
 	return c.text(id)
 }
