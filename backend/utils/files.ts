@@ -1,3 +1,9 @@
+/**
+ * Utility to quickly parse directories into routes with their respective files.
+ * @param dir Directory to scan.
+ * @param baseDir Current directory
+ * @returns routes: string[]
+ */
 export async function findRoutesRecursive(dir: string, baseDir: string) {
 	const routes: string[] = [];
 
