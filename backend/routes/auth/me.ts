@@ -10,4 +10,5 @@ export const schema: Ischema = {
 }
 
 export async function run(c: Context) {
+	return c.text("Alive")
 }
