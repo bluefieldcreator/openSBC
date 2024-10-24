@@ -24,37 +24,37 @@ app.use(poweredBy());
 app.use(secureHeaders());
 // Must use `wait: true` for the Deno runtime
 app.get(
-  '*',
-  cache({
-    cacheName: 'my-app',
-    cacheControl: 'max-age=3600',
-    wait: true,
-  }),
+	'*',
+	cache({
+		cacheName: 'my-app',
+		cacheControl: 'max-age=3600',
+		wait: true,
+	}),
 );
 /**
  * Route logging
  */
 for (const registeredRoute of routes) {
-  if (isDebug) {
-    console.log(
-      `🧭 | ${registeredRoute.options.method} | ${registeredRoute.options.url}`,
-    );
-  }
-  // In case the route doesnt have any properties, we send it to fallback.
-  if (!registeredRoute.options.method || !registeredRoute.options.url) {
-    registeredRoute.options = {
-      method: 'GET',
-      url: '/fallback',
-      middleware: [''],
-    };
-  }
+	if (isDebug) {
+		console.log(
+			`🧭 | ${registeredRoute.options.method} | ${registeredRoute.options.url}`,
+		);
+	}
+	// In case the route doesnt have any properties, we send it to fallback.
+	if (!registeredRoute.options.method || !registeredRoute.options.url) {
+		registeredRoute.options = {
+			method: 'GET',
+			url: '/fallback',
+			middleware: [''],
+		};
+	}
 
-  app.on(
-    registeredRoute.options.method,
-    registeredRoute.options.url,
-    async (context) =>
-      await registeredRoute.run(context).catch((err) => errorMsg(err)),
-  );
+	app.on(
+		registeredRoute.options.method,
+		registeredRoute.options.url,
+		async (context) =>
+			await registeredRoute.run(context).catch((err) => errorMsg(err)),
+	);
 }
 
 Deno.serve(app.fetch);
