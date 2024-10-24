@@ -1,6 +1,5 @@
 {
 	"imports": {
-		"@gz/jwt": "jsr:@gz/jwt@^0.1.0",
 		"hono": "jsr:@hono/hono@^4.6.6",
 		"prisma": "npm:prisma@^5.21.1"
 	},

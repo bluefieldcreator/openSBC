@@ -1,18 +1,15 @@
 {
   "version": "4",
   "specifiers": {
-    "jsr:@gz/jwt@0.1": "0.1.0",
     "jsr:@hono/hono@^4.6.6": "4.6.6",
     "jsr:@std/dotenv@*": "0.225.2",
     "jsr:@std/path@*": "1.0.6",
+    "npm:@prisma/client@^5.21.1": "5.21.1_prisma@5.21.1",
     "npm:@types/node@*": "22.5.4",
     "npm:prisma@^5.21.1": "5.21.1",
     "npm:prisma@latest": "5.21.1"
   },
   "jsr": {
-    "@gz/jwt@0.1.0": {
-      "integrity": "32b0235cebcb85d363459b20ccaab0d8424fab89883c9f65caa1e2ad37e78e8f"
-    },
     "@hono/hono@4.6.6": {
       "integrity": "4856346894db3abfc4bdb89607b4d7bd84725236076fc922573def2b2b64130b"
     },
@@ -24,6 +21,12 @@
     }
   },
   "npm": {
+    "@prisma/client@5.21.1_prisma@5.21.1": {
+      "integrity": "sha512-3n+GgbAZYjaS/k0M03yQsQfR1APbr411r74foknnsGpmhNKBG49VuUkxIU6jORgvJPChoD4WC4PqoHImN1FP0w==",
+      "dependencies": [
+        "prisma"
+      ]
+    },
     "@prisma/debug@5.21.1": {
       "integrity": "sha512-uY8SAhcnORhvgtOrNdvWS98Aq/nkQ9QDUxrWAgW8XrCZaI3j2X7zb7Xe6GQSh6xSesKffFbFlkw0c2luHQviZA=="
     },
@@ -144,7 +147,6 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@gz/jwt@0.1",
       "jsr:@hono/hono@^4.6.6",
       "npm:prisma@^5.21.1"
     ],
