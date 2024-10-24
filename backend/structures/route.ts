@@ -1,41 +1,41 @@
-import { fromFileUrl } from 'https://deno.land/std@0.224.0/path/from_file_url.ts';
-import { findRoutesRecursive } from '../utils/files.ts';
-import type { Context } from 'hono';
-import { errorMsg } from '../utils/error.ts';
+import { fromFileUrl } from "https://deno.land/std@0.224.0/path/from_file_url.ts"
+import { findRoutesRecursive } from "../utils/files.ts"
+import type { Context } from "hono"
+import { errorMsg } from "../utils/error.ts"
 
 interface Irun {
 	// deno-lint-ignore no-explicit-any
-	(c: Context): Promise<any>;
+	(c: Context): Promise<any>
 }
 
 export interface routeFunc {
-	run: Irun;
+	run: Irun
 	options: {
-		url: string;
-		method: string;
-		middleware: string[];
-	};
+		url: string
+		method: string
+		middleware: string[]
+	}
 }
 
 export default {
 	load: async () => {
-		const routesDir = fromFileUrl(new URL('../routes', import.meta.url));
+		const routesDir = fromFileUrl(new URL("../routes", import.meta.url))
 
 		const baseDir = routesDir.substring(
 			0,
-			routesDir.lastIndexOf('/routes'),
-		);
+			routesDir.lastIndexOf("/routes"),
+		)
 		const allRoutes = await findRoutesRecursive(routesDir, baseDir).catch(
 			(err) => errorMsg(err),
-		);
+		)
 
-		const routeFunctions: routeFunc[] = [];
+		const routeFunctions: routeFunc[] = []
 		for (const routeFile of allRoutes) {
 			const route: routeFunc = await import(`./../${routeFile}`).catch(
 				(err) => errorMsg(err),
-			);
-			routeFunctions.push(route);
+			)
+			routeFunctions.push(route)
 		}
-		return routeFunctions;
+		return routeFunctions
 	},
-};
+}
