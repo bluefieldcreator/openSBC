@@ -32,13 +32,7 @@ export default {
 		const routeFunctions: routeFunc[] = [];
 		for (const routeFile of allRoutes) {
 			const route: routeFunc = await import(`./../${routeFile}`).catch(
-				(err) => {
-					console.error(
-						'There was an error while processing the route import, please ensure the codebase is properly cloned.',
-					);
-					console.error(err);
-					Deno.exit(-1);
-				},
+				(err) => errorMsg(err),
 			);
 			routeFunctions.push(route);
 		}
