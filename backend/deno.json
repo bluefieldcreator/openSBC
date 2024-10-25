@@ -38,8 +38,7 @@
 		]
 	},
 	"imports": {
-		"hono": "jsr:@hono/hono@^4.6.6",
-		"prisma": "npm:prisma@^5.21.1"
+		"hono": "jsr:@hono/hono@^4.6.6"
 	},
 	"compilerOptions": {
 		"jsx": "precompile",

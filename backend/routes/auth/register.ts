@@ -38,20 +38,7 @@ export async function run(c: Context) {
 		return jsonStatus(c, 400, "Passwords dont match.")
 	}
 
-	// We check if the user exists.
-	try {
-		const exists = await db.user.findFirst({
-			where: {
-				username,
-			},
-		})
 
-		if (exists) {
-			return jsonStatus(c, 409, JSON.stringify(exists))
-		}
-	} catch(err) {
-		return jsonStatus(c, 500, `${err}`) // TODO(@bluefield) FIX PRISMA? For some reason it refuses to work ont he DENO runtime.
-	}
 
 	// Hash E-Mail & Password
 	const passwordHash = await bcrypt.hash(password)
@@ -62,13 +49,7 @@ export async function run(c: Context) {
 	 * Connect to E-mail provider.
 	 */
 
-	await db.user.create({
-		data: {
-			username,
-			password: passwordHash, // We have no business with passwords in general... Duh!
-			email: emailHash, // We have no business with E-Mails other than verification, why store it plain?
-		},
-	})
+	
 
 	return c.json({
 		status: 200,
