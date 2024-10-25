@@ -38,8 +38,6 @@ export async function run(c: Context) {
 		return jsonStatus(c, 400, "Passwords dont match.")
 	}
 
-
-
 	// Hash E-Mail & Password
 	const passwordHash = await bcrypt.hash(password)
 	const emailHash = await bcrypt.hash(email)
@@ -48,8 +46,6 @@ export async function run(c: Context) {
 	/**
 	 * Connect to E-mail provider.
 	 */
-
-	
 
 	return c.json({
 		status: 200,
