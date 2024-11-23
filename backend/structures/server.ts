@@ -9,7 +9,7 @@ import type { BlankEnv, BlankSchema } from "hono/types"
 import "jsr:@std/dotenv/load"
 import route from "./route.ts"
 
-const isDebug = Deno.env.get("DEBUGGING") == "true" ? true : false
+const isDebug = Deno.env.get("DEBUGGING")! == "true" ? true : false
 
 export async function init(app: Hono<BlankEnv, BlankSchema, "/">) {
 	const routes = await route.load().catch((err) => errorMsg(err))
@@ -35,10 +35,9 @@ export async function init(app: Hono<BlankEnv, BlankSchema, "/">) {
 	 */
 	for (const registeredRoute of routes!) {
 		if (isDebug) {
-			/*console.log(
-        `🧭 | ${registeredRoute.schema.method} | ${registeredRoute.schema.name} | ${registeredRoute.schema.description}`,
-      )*/
-			console.table(registeredRoute.schema)
+			console.log(
+				`🧭 | ${registeredRoute.schema.method} | ${registeredRoute.schema.name} | ${registeredRoute.schema.description}`,
+			)
 		}
 		// In case the route doesnt have any properties, we send it to fallback.
 		if (!registeredRoute.schema.method || !registeredRoute.schema.url) {

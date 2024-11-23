@@ -34,7 +34,11 @@
 		]
 	},
 	"imports": {
-		"hono": "jsr:@hono/hono@^4.6.6"
+		"@types/pg": "npm:@types/pg@^8.11.10",
+		"drizzle-kit": "npm:drizzle-kit@^0.28.1",
+		"drizzle-orm": "npm:drizzle-orm@^0.36.4",
+		"hono": "jsr:@hono/hono@^4.6.6",
+		"pg": "npm:pg@^8.13.1"
 	},
 	"compilerOptions": {
 		"jsx": "precompile",
